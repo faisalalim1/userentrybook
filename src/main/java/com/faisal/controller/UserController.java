@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.faisal.exception.UserNotFoundException;
-import com.faisal.model.User;
+import com.faisal.model.Users;
 import com.faisal.repository.UserRepository;
 
 @CrossOrigin("http://localhost:3000")
@@ -26,21 +26,21 @@ public class UserController {
 	
 	//POST THE DATA
 	@PostMapping("/user")
-	User newUser(@RequestBody User newUser) {
-		return userRepository.save(newUser);
+	Users newUser(@RequestBody Users newUsers) {
+		return userRepository.save(newUsers);
 	}
 	
 	
 	//GET THE DATA
 	@GetMapping("/users")
-	List<User> getAllUsers(){
+	List<Users> getAllUsers(){
 		return userRepository.findAll();
 	}
 	
 	
 	//GET DATA BY ID
 	@GetMapping("user/{id}")
-	User getUserById(@PathVariable Long id) {
+	Users getUserById(@PathVariable Long id) {
 		return userRepository.findById(id)
 				.orElseThrow(()-> new UserNotFoundException(id));
 	}
@@ -48,19 +48,19 @@ public class UserController {
 	
 	//PUT DATA BY ID
 	@PutMapping("user/{id}")
-	User updateUser(@RequestBody User newUser, @PathVariable Long id) {
+	Users updateUser(@RequestBody Users newUsers, @PathVariable Long id) {
 		return userRepository.findById(id)
-				.map(user -> {
-					user.setUsername(newUser.getUsername());
-					user.setName(newUser.getName());
-					user.setEmail(newUser.getEmail());
+				.map(users -> {
+					users.setUsername(newUsers.getUsername());
+					users.setName(newUsers.getName());
+					users.setEmail(newUsers.getEmail());
 					
-					return userRepository.save(user);
+					return userRepository.save(users);
 					
 				}).orElseThrow(()->new UserNotFoundException(id));
 	}
 	
-	//DELET METHOD 
+	//DELETE METHOD
 	@DeleteMapping("/user/{id}")
 	String deleteUser(@PathVariable Long id) {
 		if(!userRepository.existsById(id)) {

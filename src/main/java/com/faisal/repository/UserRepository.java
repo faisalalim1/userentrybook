@@ -1,9 +1,8 @@
 package com.faisal.repository;
 
+import com.faisal.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.faisal.model.User;
-
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<Users, Long> {
 
 }
