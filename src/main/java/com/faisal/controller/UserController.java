@@ -16,10 +16,6 @@ import com.faisal.exception.UserNotFoundException;
 import com.faisal.model.Users;
 import com.faisal.repository.UserRepository;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 7e42b51af67c89dc38af36e4479d86407274ced3
 @RestController
 @CrossOrigin(origins="*")
 public class UserController {
