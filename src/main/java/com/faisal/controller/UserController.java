@@ -16,8 +16,8 @@ import com.faisal.exception.UserNotFoundException;
 import com.faisal.model.Users;
 import com.faisal.repository.UserRepository;
 
-@CrossOrigin("http://localhost:3000")
 @RestController
+@CrossOrigin(origins="*")
 public class UserController {
 	
 	@Autowired
